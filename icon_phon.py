@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import panphon
+import urllib
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
@@ -40,7 +41,9 @@ def vec_mean(vec_list):
 ft = panphon.FeatureTable()
 
 
-df = pd.read_csv('iconicity_senses-master/data/iconicity_ratings.csv')
+# Load iconicity dataset
+url = "https://raw.githubusercontent.com/jotadwright/NLP_EX3/main/iconicity_ratings.csv"
+df = pd.read_csv(urllib.request.urlopen(url))
 
 # Scale iconicity values
 scaler = MinMaxScaler((-1,1))
